@@ -1,9 +1,9 @@
 package com.crud.grpc.configs;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
@@ -19,12 +19,27 @@ public class DbConfig {
     @Value("${spring.datasource.password}")
     private String dbPassword;
 
+    @Value("${spring.datasource.maximumPoolSize}")
+    private int maximumPoolSize;
+    @Value("${spring.datasource.minimumIdle}")
+    private int minimumIdle;
+
+    @Value("${spring.datasource.connectionTimeout}")
+    private int connectionTimeout;
+
+    @Value("${spring.datasource.idleTimeout}")
+    private int idleTimeout;
+
     @Bean
-    public DataSource dataSource(){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl(dbUrl);
+    public DataSource dataSource() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl(dbUrl);
         dataSource.setUsername(dbUsername);
         dataSource.setPassword(dbPassword);
+        dataSource.setMaximumPoolSize(maximumPoolSize);
+        dataSource.setMinimumIdle(minimumIdle);
+        dataSource.setConnectionTimeout(connectionTimeout);
+        dataSource.setIdleTimeout(idleTimeout);
         return dataSource;
     }
 
