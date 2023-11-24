@@ -1,4 +1,4 @@
-package com.crud.grpc.server;
+package com.crud.grpc.configs;
 
 import com.crud.grpc.services.UserServiceJdbc;
 import io.grpc.Server;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 @Configuration
-public class UserServer {
+public class ServerConfig {
 
 
     @Bean
@@ -22,16 +22,6 @@ public class UserServer {
         System.out.println("Server started at " + server.getPort());
         return server;
     }
-//    @Bean
-//    public Server grpcServer(UserServiceImpl userServiceImpl) throws IOException {
-//
-//        Server server = ServerBuilder.forPort(9090)
-//                .addService(userServiceImpl)
-//                .build();
-//        server.start();
-//        System.out.println("Server started at " + server.getPort());
-//        return server;
-//    }
 
 
 }
