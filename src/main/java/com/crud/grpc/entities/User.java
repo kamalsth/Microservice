@@ -1,19 +1,14 @@
 package com.crud.grpc.entities;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "users")
+
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long userId;
     private String name;
     private String phone;
     private String address;
 
-    public User() {
-    }
 
     public User(Long userId, String name, String phone, String address) {
         this.userId = userId;
