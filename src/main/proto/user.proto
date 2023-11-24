@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package com.crud.grpc;
+
+message User {
+  int64 user_id = 1;
+  string name = 2;
+  string phone = 3;
+  string address = 4;
+}
+
+service UserService {
+  rpc CreateUser(User) returns (User);
+  rpc GetUser(GetUserRequest) returns (User);
+  rpc UpdateUser(User) returns (User);
+  rpc DeleteUser(DeleteUserRequest) returns (User);
+}
+
+message GetUserRequest {
+  int64 user_id = 1;
+}
+
+message DeleteUserRequest {
+  int64 user_id = 1;
+}
