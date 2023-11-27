@@ -27,8 +27,6 @@ public class UserServiceJdbc extends UserServiceGrpc.UserServiceImplBase {
                 String sql = "INSERT INTO users (name,phone,address) VALUES ('" + request.getName() + "','" + request.getPhone() + "','" + request.getAddress() + "')";
                 int rows = statement.executeUpdate(sql);
                 System.out.println(rows + " row(s) affected");
-                statement.close();
-                connection.close();
             } catch (SQLException e) {
                 System.out.println("Error executing the SQL query" + e.getMessage());
             }
