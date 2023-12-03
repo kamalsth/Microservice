@@ -43,6 +43,8 @@ public class UserServiceJdbc extends UserServiceGrpc.UserServiceImplBase {
         }
     }
 
+
+    //code to get the details of users
     @Override
     public void getUser(UserOuterClass.GetUserRequest request, StreamObserver<UserOuterClass.User> responseObserver) {
         try (Connection connection = dataSource.getConnection()) {
