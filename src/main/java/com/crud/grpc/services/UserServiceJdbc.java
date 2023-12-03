@@ -19,6 +19,8 @@ public class UserServiceJdbc extends UserServiceGrpc.UserServiceImplBase {
     @Autowired
     private DataSource dataSource;
 
+
+    //code to add user in database
     @Override
     public void createUser(UserOuterClass.User request, StreamObserver<UserOuterClass.User> responseObserver) {
         try (Connection connection = dataSource.getConnection()) {
